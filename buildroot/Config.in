@@ -1,0 +1,1 @@
+source "$BR2_EXTERNAL_NFR26_PATH/package/dash/Config.in"
