@@ -1,1 +1,1 @@
-source "$BR2_EXTERNAL_NFR26_PATH/package/dash/Config.in"
+source "$BR2_EXTERNAL_NFR26_PATH/package/nfr-dash/Config.in"
