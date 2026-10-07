@@ -1,0 +1,30 @@
+#!/bin/sh
+# Board appears as a USB network adapter; host gets an address from udhcpd
+
+IFACE=usb0
+ADDR=10.55.0.1
+LEASES=/var/run/udhcpd.usb0.leases
+
+start() {
+	printf "Starting USB gadget: "
+	# Fixed MACs so the host sees the same adapter every boot
+	modprobe g_ether host_addr=02:4e:46:52:00:01 dev_addr=02:4e:46:52:00:02 || { echo "FAIL"; return 1; }
+	ip addr add "$ADDR/24" dev "$IFACE"
+	ip link set "$IFACE" up
+	touch "$LEASES"
+	udhcpd -S /etc/udhcpd.usb0.conf && echo "OK" || echo "FAIL"
+}
+
+stop() {
+	printf "Stopping USB gadget: "
+	killall udhcpd 2>/dev/null
+	ip link set "$IFACE" down 2>/dev/null
+	modprobe -r g_ether && echo "OK" || echo "FAIL"
+}
+
+case "$1" in
+	start) start ;;
+	stop) stop ;;
+	restart) stop; sleep 1; start ;;
+	*) echo "Usage: $0 {start|stop|restart}"; exit 1 ;;
+esac
