@@ -22,5 +22,4 @@ dtparam=spi=on
 # USB 2.0 port acts as a device so the board shows up as USB ethernet
 dtoverlay=dwc2,dr_mode=peripheral
 
-# Waveshare 5" DSI panel (type A)
-dtoverlay=vc4-kms-dsi-waveshare-panel-v2,5_0_inch_a,dsi0
+dtoverlay=vc4-kms-dsi-7inch,dsi0
