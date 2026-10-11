@@ -7,11 +7,14 @@ fixup_file=fixup4.dat
 kernel=Image
 arm_64bit=1
 
+boot_delay=0
+disable_splash=1
+
 disable_overscan=1
 gpu_mem_1024=100
 
-# Enable UART0 for serial console on ttyAMA0
-dtoverlay=miniuart-bt
+# Disable bluetooth
+dtoverlay=disable-bt
 
 # KMS display + V3D GPU; Okay Engine opens /dev/dri/card0
 dtoverlay=vc4-kms-v3d
@@ -22,4 +25,5 @@ dtparam=spi=on
 # USB 2.0 port acts as a device so the board shows up as USB ethernet
 dtoverlay=dwc2,dr_mode=peripheral
 
+# DSI output
 dtoverlay=vc4-kms-dsi-7inch,dsi0
