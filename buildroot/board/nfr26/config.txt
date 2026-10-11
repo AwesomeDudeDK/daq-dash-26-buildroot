@@ -13,7 +13,7 @@ gpu_mem_1024=100
 # Enable UART0 for serial console on ttyAMA0
 dtoverlay=miniuart-bt
 
-# KMS display + V3D GPU; Okay Engine opens /dev/dri/card1
+# KMS display + V3D GPU; Okay Engine opens /dev/dri/card0
 dtoverlay=vc4-kms-v3d
 
 # spidev for the MCP2515 CAN controller (/dev/spidev0.0)
@@ -21,3 +21,6 @@ dtparam=spi=on
 
 # USB 2.0 port acts as a device so the board shows up as USB ethernet
 dtoverlay=dwc2,dr_mode=peripheral
+
+# Waveshare 5" DSI panel (type A)
+dtoverlay=vc4-kms-dsi-waveshare-panel-v2,5_0_inch_a,dsi0
