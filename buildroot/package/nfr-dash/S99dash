@@ -5,6 +5,7 @@ PIDFILE=/var/run/dash.pid
 
 start() {
 	printf "Starting dash: "
+	echo "dash: starting at $(cut -d' ' -f1 /proc/uptime)s" > /dev/kmsg
 	cd /opt/dash || exit 1
 	start-stop-daemon -S -b -m -p "$PIDFILE" -x "$DAEMON" && echo "OK" || echo "FAIL"
 }
