@@ -1,0 +1,10 @@
+#!/bin/sh
+
+t() { cut -d' ' -f1 /proc/uptime; }
+
+for i in /etc/init.d/S??*; do
+	[ ! -f "$i" ] && continue
+	s=$(t)
+	"$i" start
+	echo "rcS: $(basename "$i") ${s}s -> $(t)s" > /dev/kmsg
+done
