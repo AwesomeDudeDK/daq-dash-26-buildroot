@@ -37,7 +37,7 @@ class GPIO : public IGpio {
 class SPI : public ISpi {
    public:
     SPI(const std::string& device = "/dev/spidev0.0",
-        uint32_t speedHz = 1'000'000,
+        uint32_t speedHz = 10'000'000,
         uint8_t mode = 0,
         uint8_t bitsPerWord = 8);
     ~SPI();
