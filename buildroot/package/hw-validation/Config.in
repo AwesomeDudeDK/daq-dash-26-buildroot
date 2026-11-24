@@ -10,7 +10,7 @@ if BR2_PACKAGE_HW_VALIDATION
 
 config BR2_PACKAGE_HW_VALIDATION_SRC_DIR
 	string "hardware_validation checkout"
-	default "$(HOME)/hardware_validation"
+	default "$(HOME)/Projects/hardware_validation"
 	help
 	  Path to the hardware_validation repository, with the can
 	  submodule checked out.
