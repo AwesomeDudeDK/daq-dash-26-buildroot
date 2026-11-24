@@ -1,0 +1,21 @@
+config BR2_PACKAGE_HW_VALIDATION
+	bool "hw-validation"
+	depends on BR2_INSTALL_LIBSTDCPP
+	depends on BR2_PACKAGE_LIBGPIOD2
+	help
+	  CAN monitor for validating NFR hardware. Prints received
+	  CAN signals to the terminal. Installs /usr/bin/can_monitor.
+
+if BR2_PACKAGE_HW_VALIDATION
+
+config BR2_PACKAGE_HW_VALIDATION_SRC_DIR
+	string "hardware_validation checkout"
+	default "$(HOME)/hardware_validation"
+	help
+	  Path to the hardware_validation repository, with the can
+	  submodule checked out.
+
+endif
+
+comment "hw-validation needs a toolchain w/ C++ and libgpiod2"
+	depends on !BR2_INSTALL_LIBSTDCPP || !BR2_PACKAGE_LIBGPIOD2
